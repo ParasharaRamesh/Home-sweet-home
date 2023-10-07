@@ -1,5 +1,8 @@
 import pandas as pd
 
+from utils.constants import month_to_num_map
+
+
 def transform_coe_prices(inp_path, out_path):
     '''
     Take the original sg-coe-prices.csv and transform it to create a new transformed sg-coe-prices.csv which has the following columns
@@ -12,21 +15,6 @@ def transform_coe_prices(inp_path, out_path):
     :param out_path: output csv path for storing the new dataframe
     :return: transformed dataframe
     '''
-    # adding date as a new column
-    month_to_num_map = {
-        "january": "01",
-        "february": "02",
-        "march": "03",
-        "april": "04",
-        "may": "05",
-        "june": "06",
-        "july": "07",
-        "august": "08",
-        "september": "09",
-        "october": "10",
-        "november": "11",
-        "december": "12",
-    }
     coe_prices_df = pd.read_csv(inp_path)
     coe_prices_df["month"] = coe_prices_df["month"].map(month_to_num_map)
     coe_prices_df["date"] = pd.to_datetime(coe_prices_df['year'].astype(str) + '-' + coe_prices_df['month'].astype(str), format="%Y-%m").dt.strftime('%Y-%m')
@@ -70,21 +58,18 @@ def transform_coe_prices(inp_path, out_path):
     )
 
     # drop the year and month from this
-    del merged_df["year"]
-    del merged_df["month"]
-    del total_price_indicator_per_month["year"]
-    del total_price_indicator_per_month["month"]
+    merged_df = merged_df.drop(columns=["year", "month"])
 
-    #save this df into the output file
+    # save this df into the output file
     merged_df.to_csv(out_path, index=False)
 
-    #return the final df
+    # return the final df
     return merged_df
 
 
-# if __name__ == '__main__':
-#     inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
-#     out_path = "../../datasets/transformed/sg-coe-prices.csv"
-#     print(transform_coe_prices(inp_path, out_path))
+if __name__ == '__main__':
+    inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
+    out_path = "../../datasets/transformed/sg-coe-prices.csv"
+    print(transform_coe_prices(inp_path, out_path))
 
 # %%
