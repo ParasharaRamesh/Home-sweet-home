@@ -1,9 +1,9 @@
 import pandas as pd
-
+from config.params import *
 from utils.constants import month_to_num_map
 
 
-def transform_coe_prices(inp_path, out_path):
+def transform_coe_prices(inp_path, out_path=None, save=False):
     '''
     Take the original sg-coe-prices.csv and transform it to create a new transformed sg-coe-prices.csv which has the following columns
 
@@ -60,16 +60,18 @@ def transform_coe_prices(inp_path, out_path):
     # drop the year and month from this
     merged_df = merged_df.drop(columns=["year", "month"])
 
-    # save this df into the output file
-    merged_df.to_csv(out_path, index=False)
+    if save:
+        # save this df into the output file
+        assert out_path != None
+        merged_df.to_csv(out_path, index=False)
 
     # return the final df
     return merged_df
 
 
-if __name__ == '__main__':
-    inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
-    out_path = "../../datasets/transformed/sg-coe-prices.csv"
-    print(transform_coe_prices(inp_path, out_path))
+# if __name__ == '__main__':
+#     inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
+#     out_path = "../../datasets/transformed/sg-coe-prices.csv"
+#     print(transform_coe_prices(inp_path, out_path))
 
 # %%
