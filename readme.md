@@ -21,3 +21,10 @@ This is the course project for CS5228 (Knowledge Discovery & Data Mining) @ NUS 
 <br>
 <b>6 ./utils</b> : Contains util functions needed throughout the project (e.g. manipulating google drive from colab/matplotlib code)
 <br>
+
+## <u> TODO </u>
+
+1. Find out the ordinal encoding for flat_type
+2. Redo the report generation part for the whole dataset ( Report_generation_after_EDA)
+3. See the correlation matrix
+4. Start with KNN
