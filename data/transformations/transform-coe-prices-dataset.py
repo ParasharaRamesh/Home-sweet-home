@@ -1,6 +1,4 @@
 import pandas as pd
-import os
-
 
 def transform_coe_prices(inp_path, out_path):
     '''
@@ -10,9 +8,9 @@ def transform_coe_prices(inp_path, out_path):
 
     Where date is of format "year-month" and coe_price_indicator is a number
 
-    :param inp_path:
-    :param out_path:
-    :return:
+    :param inp_path: input csv path
+    :param out_path: output csv path for storing the new dataframe
+    :return: transformed dataframe
     '''
     # adding date as a new column
     month_to_num_map = {
