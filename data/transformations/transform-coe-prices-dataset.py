@@ -36,7 +36,7 @@ def transform_coe_prices(inp_path, out_path):
 
     # Create a date range with all months from the minimum to maximum date
     start_date = pd.to_datetime('2021-01', format='%Y-%m')
-    end_date = pd.to_datetime('2023-12', format='%Y-%m')
+    end_date = pd.to_datetime('2024-01', format='%Y-%m')
     date_range = pd.date_range(start=start_date, end=end_date, freq='M')
     date_df = pd.DataFrame({'date': date_range})
     date_df["date"] = date_df["date"].dt.strftime('%Y-%m')
