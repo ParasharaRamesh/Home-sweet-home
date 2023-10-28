@@ -28,3 +28,34 @@ This is the course project for CS5228 (Knowledge Discovery & Data Mining) @ NUS 
 2. Redo the report generation part for the whole dataset ( Report_generation_after_EDA)
 3. See the correlation matrix
 4. Start with KNN
+
+Reviewing Backlog and Next Action Items (27th October):
+
+Key comments from Prof:
+
+1) target encoding nominal attributes with a large number of values - Adi will look into this
+
+2) before fine-tuning KNN, try other sklearn models such as lin reg, random forests, xgboost.
+
+My thoughts:
+
+Find "Importance" of an Area or a Town - consolidate MRTs, Schools, Shopping Malls using "Centrality"
+
+EDA code looks good (just some deprecated warning somewhere)
+EDA flow  - normalization -> sklearn min-max?
+
+check haversine implementation again - Parashara
+
+Use Spearman Correlation apart from Pearson Coefficient (Pearson checks linear corr. Spearman gives an idea of transitive/non-linear corr too.) -> Sriram
+
+two algos per person - one algo per person wont be enough.
+
+KNN
+Lin Reg(*)
+Random Forests (*)
+XG Boost (*)
+Neural Nets
+Another Algo
+Another Algo
+
+* - mentioned by Prof
