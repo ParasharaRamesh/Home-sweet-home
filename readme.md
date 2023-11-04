@@ -22,11 +22,22 @@ This is the course project for CS5228 (Knowledge Discovery & Data Mining) @ NUS 
 <b>6 ./utils</b> : Contains util functions needed throughout the project (e.g. manipulating google drive from colab/matplotlib code)
 <br>
 
+## My Flow
+
+* Recheck the existing code for coe -> create a neat ipynb
+* Recheck the existing code for distance -> create a neat ipynb
+* Recheck the approach for cleaning -> create a neat ipynb
+- here wait for adi's input on flat type
+- target encoding
+- wait for importance scores
+- do spearman
+
+
 ## <u> TODO </u>
 
 1. Pending things to do in EDA: 
 - Prof comments:
-*  target encoding nominal attributes with a large number of values - Adi will look into this
+*  target encoding nominal attributes with a large number of values - basically imputation
 - Review existing code
 - check haversine implementation again
 * EDA flow  - normalization -> sklearn min-max?
