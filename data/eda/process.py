@@ -1,9 +1,9 @@
 import pandas as pd
 
 from data.eda.process_coe_prices import transform_coe_prices
+from data.eda.process_main_dataset import clean_and_normalize
 from data.eda.process_stock_prices import transform_stock_prices
 from data.eda.process_train_with_location_info import extract_distance_columns_from_aux_mrt_school_mall
-from utils.data_utils import *
 from config.params import *
 
 def merge_dataframes(df_with_locs, df_coe, df_stocks):
