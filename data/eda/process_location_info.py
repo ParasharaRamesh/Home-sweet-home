@@ -72,6 +72,6 @@ def extract_distance_columns_from_aux_mrt_school_mall(train_input_path, mrt_inpu
 #     mrt_planned_input_path = "../../datasets/auxiliary-data/sg-mrt-planned-stations.csv"
 #     mall_input_path = "../../datasets/auxiliary-data/sg-shopping-malls.csv"
 #     school_input_path = "../../datasets/auxiliary-data/sg-primary-schools.csv"
-#     output_path = "../../datasets/transformed/train_with_nearest_locations.csv"
+#     output_path = "../../datasets/final/train_with_nearest_locations.csv"
 #     extract_distance_columns_from_aux_mrt_school_mall(train_input_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, output_path)
 #     print("done")

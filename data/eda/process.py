@@ -36,7 +36,7 @@ def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, sc
 
 
 if __name__ == '__main__':
-    save_intermediate_df = False
+    save_intermediate_df = True
 
     train_input_path = "../../datasets/train.csv"
     test_input_path = "../../datasets/test.csv"
@@ -47,8 +47,8 @@ if __name__ == '__main__':
     coe_input_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
     stocks_input_path = "../../datasets/auxiliary-data/sg-stock-prices.csv"
 
-    train_output_path = "../../datasets/transformed/train_clean.csv"
-    test_output_path = "../../datasets/transformed/test_clean.csv"
+    train_output_path = "../../datasets/final/train_clean.csv"
+    test_output_path = "../../datasets/final/test_clean.csv"
 
     train_clean = process(train_input_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_input_path, stocks_input_path, train_output_path, save_intermediate_df)
     print("train done")
