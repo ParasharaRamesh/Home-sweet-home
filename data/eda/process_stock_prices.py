@@ -1,7 +1,6 @@
 import pandas as pd
 from config.params import *
 
-
 def transform_stock_prices(inp_path, out_path=None, save=False):
     '''
     Take the original sg-stock-prices.csv and transform it to create a new transformed sg-stock-prices.csv which has the following columns
@@ -74,7 +73,7 @@ def transform_stock_prices(inp_path, out_path=None, save=False):
     return merged_df
 
 
-# if __name__ == '__main__':
-#     inp_path = "../../datasets/auxiliary-data/sg-stock-prices.csv"
-#     out_path = "../../datasets/transformed/sg-stock-prices.csv"
-#     print(transform_stock_prices(inp_path, out_path))
+if __name__ == '__main__':
+    inp_path = "../../datasets/auxiliary-data/sg-stock-prices.csv"
+    out_path = "../../datasets/transformed/sg-stock-prices.csv"
+    print(transform_stock_prices(inp_path, out_path))
