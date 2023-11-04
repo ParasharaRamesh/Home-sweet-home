@@ -24,8 +24,8 @@ This is the course project for CS5228 (Knowledge Discovery & Data Mining) @ NUS 
 
 ## My Flow
 
-* Recheck the existing code for coe -> create a neat ipynb
-* Recheck the existing code for distance -> create a neat ipynb
+* Recheck the existing code for coe -> create a neat ipynb (X)
+* Recheck the existing code for distance -> create a neat ipynb (X)
 * Recheck the approach for cleaning -> create a neat ipynb
 - here wait for adi's input on flat type
 - target encoding

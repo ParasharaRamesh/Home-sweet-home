@@ -43,8 +43,7 @@ def extract_distance_columns_from_aux_mrt_school_mall(train_input_path, mrt_inpu
 
     # calculate all distances
     distances_to_closest_mrt_for_all_houses = calculate_distance_to_nearest_mrt(lat_long_of_houses, lat_long_of_mrts)
-    distances_to_closest_mrt_planned_for_all_houses = calculate_distance_to_nearest_mrt_planned(lat_long_of_houses, house_rent_approval_year, lat_long_of_mrts_planned,
-                                                                                                mrt_opening_year)
+    distances_to_closest_mrt_planned_for_all_houses = calculate_distance_to_nearest_mrt_planned(lat_long_of_houses, house_rent_approval_year, lat_long_of_mrts_planned,mrt_opening_year)
     distances_to_closest_school_for_all_houses = calculate_distance_to_nearest_school(lat_long_of_houses, lat_long_of_school)
     distances_to_closest_mall_for_all_houses = calculate_distance_to_nearest_mall(lat_long_of_houses, lat_long_of_malls)
 

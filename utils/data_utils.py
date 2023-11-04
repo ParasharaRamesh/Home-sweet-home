@@ -31,6 +31,7 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     # Calculate the distance
     distance = earth_radius_km * c
 
+    # returns distance in meters
     return distance * 1000
 
 
@@ -135,7 +136,6 @@ def calculate_distance_to_nearest_school(list1, list2):
         distances_to_all_school = []
         for point2 in list2:
             lat2, lon2 = point2
-            # distance = (geodesic(point1, point2).kilometers ) * 1000
             distance = haversine_distance(lat1, lon1, lat2, lon2)
             distances_to_all_school.append(distance)
         distance_to_closest_school = min(distances_to_all_school)
@@ -334,3 +334,10 @@ def clean_and_normalize(df):
     print("Number of rows after cleaning = ", len(df_normalized))
     print("Number of columns after cleaning = ", df_normalized.shape[1])
     return df_normalized
+
+# if __name__ == "__main__":
+#     lat1,lon1 = 1.333084, 103.750254
+#     lat2,lon2 = 1.3307673380970195, 103.76720560712226
+#
+#     #1.9km
+#     print(haversine_distance(lat1, lon1, lat2, lon2))
