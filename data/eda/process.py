@@ -1,59 +1,24 @@
-import pandas as pd
-
 from data.eda.process_coe_prices import transform_coe_prices
-from data.eda.process_main_dataset import clean_and_normalize
+from data.eda.process_main_dataset import clean_and_normalize, merge_dataframes
 from data.eda.process_stock_prices import transform_stock_prices
 from data.eda.process_train_with_location_info import extract_distance_columns_from_aux_mrt_school_mall
-from config.params import *
-
-def merge_dataframes(df_with_locs, df_coe, df_stocks):
-    '''
-    Merge all the dataframes obtained so far
-
-    :param df_with_locs:
-    :param df_coe:
-    :param df_stocks:
-    :return:
-    '''
-    # change the columns for date for easier merging
-    df_coe["rent_approval_date"] = df_coe["date"]
-    df_coe = df_coe.drop(columns=["date"])
-    df_stocks["rent_approval_date"] = df_stocks["date"]
-    df_stocks = df_stocks.drop(columns=["date"])
-
-    # merge the dataframes together
-    merged_df = pd.merge(df_with_locs, df_coe, on='rent_approval_date', how='outer')
-    merged_df = pd.merge(merged_df, df_stocks, on='rent_approval_date', how='outer')
-
-    # Drop rows where any column contains NaN values
-    merged_df = merged_df.dropna()
-
-    return merged_df
 
 def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_path, stock_path, out_path=None, save=False):
     #Phase1: getting additional details from auxillary datasets
     # process with coe
-    #TODO.x remove this after finishing checking
-    # df_coe = transform_coe_prices(coe_path)
+    df_coe = transform_coe_prices(coe_path)
 
     # process stock information
-    #TODO.x remove this after finishing checking
-    # df_stocks = transform_stock_prices(stock_path)
+    df_stocks = transform_stock_prices(stock_path)
 
     # first process and transform the dataset with the distance related values
-    #TODO.x remove this after finishing checking
-    # df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
+    df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
 
     #Phase2: combining all the dataframes
     # merge dataframes
-    #TODO.x remove this after finishing checking
-    # df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)
+    df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)
 
     #Phase3: cleaning and normalizing
-
-    #TODO.x remove this after finishing checking the clean and normalize code
-    df_dirty = pd.read_csv(df_path)
-
     # normalize and clean dataframe
     df_clean = clean_and_normalize(df_dirty)
 
