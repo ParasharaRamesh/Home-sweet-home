@@ -24,38 +24,20 @@ This is the course project for CS5228 (Knowledge Discovery & Data Mining) @ NUS 
 
 ## <u> TODO </u>
 
-1. Find out the ordinal encoding for flat_type
-2. Redo the report generation part for the whole dataset ( Report_generation_after_EDA)
-3. See the correlation matrix
-4. Start with KNN
+1. Pending things to do in EDA: 
+- Prof comments:
+*  target encoding nominal attributes with a large number of values - Adi will look into this
+- Review existing code
+- check haversine implementation again
+* EDA flow  - normalization -> sklearn min-max?
+- look at ordinal type for flat type
+- redo the ipynb with step by step explanation for each eda step (X)
+- recheck the report generation after eda
+- Reformat the "Are Economic Indicators even useful" ipynb into "what columns are useful" using spearman 
 
-Reviewing Backlog and Next Action Items (27th October):
+2. Find importance of an area or town using Page Rank centrality:
+- We are doing two approaches town wise importance, importance to nearest entity
 
-Key comments from Prof:
-
-1) target encoding nominal attributes with a large number of values - Adi will look into this
-
-2) before fine-tuning KNN, try other sklearn models such as lin reg, random forests, xgboost.
-
-My thoughts:
-
-Find "Importance" of an Area or a Town - consolidate MRTs, Schools, Shopping Malls using "Centrality"
-
-EDA code looks good (just some deprecated warning somewhere)
-EDA flow  - normalization -> sklearn min-max?
-
-check haversine implementation again - Parashara
-
-Use Spearman Correlation apart from Pearson Coefficient (Pearson checks linear corr. Spearman gives an idea of transitive/non-linear corr too.) -> Sriram
-
-two algos per person - one algo per person wont be enough.
-
-KNN
-Lin Reg(*)
-Random Forests (*)
-XG Boost (*)
-Neural Nets
-Another Algo
-Another Algo
-
-* - mentioned by Prof
+3. Train KNN with new dataset -> vanilla & haversine
+4. Train Neural Network with dataset
+5. Write TODOs for other teammates
