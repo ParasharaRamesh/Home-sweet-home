@@ -50,18 +50,21 @@ def clean(train_with_loc_path, coe_df_path, stock_df_path, output_path):
 
 
 def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_path, stock_path, out_path=None, save=False):
-    # first process and transform the dataset with the distance related values
-    df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
-
+    #Phase1: getting additional details from auxillary datasets
     # process with coe
     df_coe = transform_coe_prices(coe_path)
 
     # process stock information
     df_stocks = transform_stock_prices(stock_path)
 
+    # first process and transform the dataset with the distance related values
+    df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
+
+    #Phase2: combining all the dataframes
     # merge dataframes
     df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)
 
+    #Phase3: cleaning and normalizing
     # normalize and clean dataframe
     df_clean = clean_and_normalize(df_dirty)
 

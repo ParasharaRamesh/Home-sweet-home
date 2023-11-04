@@ -69,9 +69,8 @@ def transform_coe_prices(inp_path, out_path=None, save=False):
     return merged_df
 
 
-# if __name__ == '__main__':
-#     inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
-#     out_path = "../../datasets/transformed/sg-coe-prices.csv"
-#     print(transform_coe_prices(inp_path, out_path))
+if __name__ == '__main__':
+    inp_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
+    out_path = "../../datasets/transformed/sg-coe-prices.csv"
+    print(transform_coe_prices(inp_path, out_path))
 
-# %%
