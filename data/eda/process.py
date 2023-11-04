@@ -30,41 +30,30 @@ def merge_dataframes(df_with_locs, df_coe, df_stocks):
 
     return merged_df
 
-
-def clean(train_with_loc_path, coe_df_path, stock_df_path, output_path):
-    # read all the input dfs
-    df_train_with_locs = pd.read_csv(train_with_loc_path)
-    df_coe = pd.read_csv(coe_df_path)
-    df_stocks = pd.read_csv(stock_df_path)
-
-    # merge dataframes
-    df_dirty = merge_dataframes(df_train_with_locs, df_coe, df_stocks)
-
-    # normalize and clean dataframe
-    df_clean = clean_and_normalize(df_dirty)
-
-    # save cleaned dataset
-    df_clean.to_csv(output_path, index=False)
-
-    return df_clean
-
-
 def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_path, stock_path, out_path=None, save=False):
     #Phase1: getting additional details from auxillary datasets
     # process with coe
-    df_coe = transform_coe_prices(coe_path)
+    #TODO.x remove this after finishing checking
+    # df_coe = transform_coe_prices(coe_path)
 
     # process stock information
-    df_stocks = transform_stock_prices(stock_path)
+    #TODO.x remove this after finishing checking
+    # df_stocks = transform_stock_prices(stock_path)
 
     # first process and transform the dataset with the distance related values
-    df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
+    #TODO.x remove this after finishing checking
+    # df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
 
     #Phase2: combining all the dataframes
     # merge dataframes
-    df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)
+    #TODO.x remove this after finishing checking
+    # df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)
 
     #Phase3: cleaning and normalizing
+
+    #TODO.x remove this after finishing checking the clean and normalize code
+    df_dirty = pd.read_csv(df_path)
+
     # normalize and clean dataframe
     df_clean = clean_and_normalize(df_dirty)
 
@@ -77,6 +66,8 @@ def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, sc
 
 
 if __name__ == '__main__':
+    save_intermediate_df = False
+
     train_input_path = "../../datasets/train.csv"
     train_output_path = "../../datasets/transformed/train_clean.csv"
 

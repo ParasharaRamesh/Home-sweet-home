@@ -65,6 +65,8 @@ def transform_coe_prices(inp_path, out_path=None, save=False):
         assert out_path != None
         merged_df.to_csv(out_path, index=False)
 
+    print("Finished processing the COE Auxiliary dataset")
+
     # return the final df
     return merged_df
 

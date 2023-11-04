@@ -245,7 +245,7 @@ def to_lower(df):
     return df
 
 
-def flat_type_to_lower_case(df):
+def ordinalize_flat_type(df):
     """Normalize flat_type column. Replace the string with the number of rooms.
        Eg "3-rooms" will be "3".
         only for "Executive" type we will replace it with an ordinal value of 6

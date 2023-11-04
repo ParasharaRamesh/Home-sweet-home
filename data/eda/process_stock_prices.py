@@ -69,6 +69,8 @@ def transform_stock_prices(inp_path, out_path=None, save=False):
         # save this df into the output file
         merged_df.to_csv(out_path, index=False)
 
+    print("Finished processing the Stock prices Auxiliary dataset")
+
     # return the final df
     return merged_df
 
