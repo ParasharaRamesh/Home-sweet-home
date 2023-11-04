@@ -273,12 +273,44 @@ def count_planning_areas(df):
     print("Number of rows which have `planning_area` as a subset of `town` = ", count)
 
 
-#TODO.x need to change this implementation
-def get_ordinality_for_flat_type(df):
+def get_ordinality_for_flat_model(df):
     '''
-    Assign an ordinality for the flat_type column
+    ordinalizing the flat type + flat model combination
 
     :param df:
     :return:
     '''
+    #combining the flat-type and flat-model into one concatenated string
+    df['combined_column'] = df['flat_type'].astype(str) + df['flat_model'].str.replace(' ', '')
+    combined_values = df['combined_column'].unique()
+
+    # for each combination we are keeping track of the min and max values
+    flat_combos = dict()
+    for value in combined_values:
+        min_val = df[df['combined_column'] == value]['floor_area_sqm'].min()
+        max_val = df[df['combined_column'] == value]['floor_area_sqm'].max()
+        flat_combos[value] = {
+            "min_sqm": min_val,
+            "max_sqm": max_val
+        }
+
+    #find the average flat_sq area
+    for flat_combo in flat_combos.keys():
+        flat_combos[flat_combo] = flat_combos[flat_combo]["min_sqm"] + flat_combos[flat_combo]["max_sqm"]
+
+    #sort by flat sq area
+    flat_combo_ordinal = {}
+    sort_flat_combos_by_area = sorted(flat_combos.items(), key=lambda combo: combo[1])
+
+    #find the ordinalily by finding the index of the flat combo after sorting by avg sqm
+    for item in sort_flat_combos_by_area:
+        flat_combo, avg_sqm = item
+        flat_combo_ordinal[flat_combo] = sort_flat_combos_by_area.index(item)
+
+    df['flat_type_model'] = df.apply(lambda x: flat_combo_ordinal[str(x['combined_column'])], axis=1)
+
+    #deleting unnecessary columns
+    df = delete_column(df, 'combined_column')
+    df = delete_column(df, 'flat_model')
+
     return df

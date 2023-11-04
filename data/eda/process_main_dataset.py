@@ -1,5 +1,5 @@
 import pandas as pd
-from utils.data_utils import duplicate, to_lower, ordinalize_flat_type, delete_column, count_planning_areas, get_ordinality_for_flat_type, normalize_column
+from utils.data_utils import duplicate, to_lower, ordinalize_flat_type, delete_column, count_planning_areas, get_ordinality_for_flat_model, normalize_column
 
 def clean_and_normalize(df):
     """Method which cleans the train data
@@ -37,7 +37,7 @@ def clean_dataset(df):
 
     #4. make flat type & flat model ordinal
     df_ordinal_flat_type = ordinalize_flat_type(df_lower_case)
-    df_flat_type_ordinality = get_ordinality_for_flat_type(df_ordinal_flat_type)
+    df_flat_type_ordinality = get_ordinality_for_flat_model(df_ordinal_flat_type)
 
     #5. one hot encode region and town
     df_onehot = pd.get_dummies(df_flat_type_ordinality, columns=['region'], prefix=['region'])

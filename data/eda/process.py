@@ -1,7 +1,7 @@
 from data.eda.process_coe_prices import transform_coe_prices
 from data.eda.process_main_dataset import clean_and_normalize, merge_dataframes
 from data.eda.process_stock_prices import transform_stock_prices
-from data.eda.process_train_with_location_info import extract_distance_columns_from_aux_mrt_school_mall
+from data.eda.process_location_info import extract_distance_columns_from_aux_mrt_school_mall
 
 def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_path, stock_path, out_path=None, save=False):
     #Phase1: getting additional details from auxillary datasets
@@ -34,17 +34,16 @@ if __name__ == '__main__':
     save_intermediate_df = False
 
     train_input_path = "../../datasets/train.csv"
-    train_output_path = "../../datasets/transformed/train_clean.csv"
-
     test_input_path = "../../datasets/test.csv"
-    test_output_path = "../../datasets/transformed/test_clean.csv"
-
     mrt_input_path = "../../datasets/auxiliary-data/sg-mrt-existing-stations.csv"
     mrt_planned_input_path = "../../datasets/auxiliary-data/sg-mrt-planned-stations.csv"
     mall_input_path = "../../datasets/auxiliary-data/sg-shopping-malls.csv"
     school_input_path = "../../datasets/auxiliary-data/sg-primary-schools.csv"
     coe_input_path = "../../datasets/auxiliary-data/sg-coe-prices.csv"
     stocks_input_path = "../../datasets/auxiliary-data/sg-stock-prices.csv"
+
+    train_output_path = "../../datasets/transformed/train_clean.csv"
+    test_output_path = "../../datasets/transformed/test_clean.csv"
 
     train_clean = process(train_input_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_input_path, stocks_input_path, train_output_path, save_intermediate_df)
     print("train done")
