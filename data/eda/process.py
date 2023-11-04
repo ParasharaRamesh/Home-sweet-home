@@ -2,6 +2,7 @@ from data.eda.process_coe_prices import transform_coe_prices
 from data.eda.process_main_dataset import clean_and_normalize, merge_dataframes
 from data.eda.process_stock_prices import transform_stock_prices
 from data.eda.process_location_info import extract_distance_columns_from_aux_mrt_school_mall
+from data.eda.process_town_importance import *
 
 def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path, coe_path, stock_path, out_path=None, save=False):
     #Phase1: getting additional details from auxillary datasets
@@ -14,6 +15,10 @@ def process(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, sc
     # first process and transform the dataset with the distance related values
     df_with_locations = extract_distance_columns_from_aux_mrt_school_mall(df_path, mrt_input_path, mrt_planned_input_path, mall_input_path, school_input_path)
 
+    #TODO.1 call extract_town_importance and get the df
+
+
+    #TODO.2 change merge_dataframes to include town importance
     #Phase2: combining all the dataframes
     # merge dataframes
     df_dirty = merge_dataframes(df_with_locations, df_coe, df_stocks)

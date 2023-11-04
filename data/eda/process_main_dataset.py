@@ -77,6 +77,7 @@ def merge_dataframes(df_with_locs, df_coe, df_stocks):
     df_stocks = df_stocks.drop(columns=["date"])
 
     # merge the dataframes together
+    #TODO.3 merge the new town importance df here!
     merged_df = pd.merge(df_with_locs, df_coe, on='rent_approval_date', how='outer')
     merged_df = pd.merge(merged_df, df_stocks, on='rent_approval_date', how='outer')
 
