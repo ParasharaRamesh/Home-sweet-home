@@ -51,8 +51,8 @@ cpdef custom_distance_with_haversine(np.ndarray[double, ndim=1] X1, np.ndarray[d
     haversine_dist = haversine_distance(lat_X1, long_X1, lat_X2, long_X2) / 1000.0
 
     # Calculate the Euclidean distance for all columns
-    X1_rem = np.zeros((1, remaining_len), dtype=np.double)
-    X2_rem = np.zeros((1, remaining_len), dtype=np.double)
+    X1_rem = np.empty((1, remaining_len), dtype=np.double)
+    X2_rem = np.empty((1, remaining_len), dtype=np.double)
 
     for i in range(remaining_len):
         X1_rem[0, i] = X1[remaining_indices[i]]
